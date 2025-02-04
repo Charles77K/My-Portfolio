@@ -13,6 +13,9 @@ const catamaran = Catamaran({
 export const metadata: Metadata = {
   title: "Charles Obiora",
   description: "Software Developer",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
