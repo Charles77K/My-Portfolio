@@ -24,6 +24,7 @@ export const generateStaticParams = async () => {
     return [];
   }
 };
+export const revalidate = 86400;
 
 export const generateMetadata = async ({
   params,
