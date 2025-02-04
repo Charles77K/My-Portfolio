@@ -12,7 +12,7 @@ const catamaran = Catamaran({
 
 export const metadata: Metadata = {
   title: "Charles Obiora",
-  description: "A software developer with dreams",
+  description: "Software Developer",
 };
 
 export default function RootLayout({
