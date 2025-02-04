@@ -2,7 +2,7 @@
 import TechStackItem from "@/components/TechStackItem";
 import { CONTACT_INFO, EXPERIENCES, techStack } from "@/lib/static";
 
-export const About = () => {
+export const Page = () => {
   return (
     <section className="min-h-screen mt-10 bg-black text-white px-4 py-16">
       <div className="max-w-3xl mx-auto">
@@ -94,4 +94,4 @@ export const About = () => {
   );
 };
 
-export default About;
+export default Page;
