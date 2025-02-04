@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 const HomeProjects = ({ projects }: { projects: ProjectType[] }) => {
   return (
     <div className="flex flex-col items-center">
-      <div className="grid gap-2 sm:gap-5 md:gap-10 grid-cols-1 sm:grid-cols-2 mt-10 px-1 md:px-10 lg:px-[8rem]">
+      <div className="grid gap-4 sm:gap-5 md:gap-10 grid-cols-1 sm:grid-cols-2 mt-10 px-1 md:px-10 lg:px-[8rem]">
         {projects.map((project, idx) => (
           <motion.li
             initial={{ opacity: 0, y: 20 }}

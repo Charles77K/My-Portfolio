@@ -73,7 +73,7 @@ const Navbar = () => {
           animate={{ height: "auto", opacity: 1 }}
           // exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="flex md:hidden flex-col top-16 text-white bg-black bg-opacity-95 h-1/2 w-full inset-0 fixed gap-6 px-4 pt-4 z-50"
+          className="flex md:hidden text-base flex-col top-16 text-white bg-black bg-opacity-95 h-1/2 w-full inset-0 fixed gap-8 font-bold px-4 pt-4 z-50"
         >
           {navData.map((nav, idx) => (
             <motion.li key={idx} className="underline-offset-8">
