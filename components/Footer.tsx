@@ -1,26 +1,10 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 import Logo from "./Logo";
+import { socialLinks } from "@/lib/static";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const socialLinks = [
-    {
-      icon: FaGithub,
-      href: "https://github.com/charlesobiora",
-      aria: "GitHub Profile",
-    },
-    {
-      icon: FaLinkedin,
-      href: "https://www.linkedin.com/in/charles-obiora",
-      aria: "LinkedIn Profile",
-    },
-    {
-      icon: FaTwitter,
-      href: "https://twitter.com/charlesobiora",
-      aria: "Twitter Profile",
-    },
-  ];
 
   return (
     <footer className="bg-foreground text-white pt-10 pb-4 px-4 md:px-8 h-full">
@@ -49,15 +33,14 @@ const Footer = () => {
             </div>
 
             <div className="flex space-x-4 mt-4">
-              {socialLinks.map(({ icon: Icon, href, aria }) => (
+              {socialLinks.map((info) => (
                 <Link
-                  key={href}
-                  href={href}
+                  key={info.link}
+                  href={info.link}
                   target="_blank"
-                  aria-label={aria}
                   className="text-white hover:text-blue-300 transition-colors"
                 >
-                  <Icon size={24} />
+                  {info.icon}
                 </Link>
               ))}
             </div>

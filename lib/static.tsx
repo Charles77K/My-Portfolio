@@ -40,13 +40,13 @@ export const EXPERIENCES = [
   {
     role: "Software Developer - Freelancer",
     description:
-      "As a freelance software developer, I’ve built and maintained dynamic web and mobile applications. I focus on creating responsive, user-friendly interfaces while continuously exploring backend development to enhance functionality",
+      "As a freelance software developer, I’ve built and maintained web and mobile applications. I focus on creating responsive, user-friendly interfaces while continuously exploring backend development.",
     duration: "2023 - Present",
   },
   {
     role: "Graphics Designer - Freelancer",
     description:
-      "As a freelance graphics designer, I specialized in creating visually compelling flyers, art covers, and photo manipulations using Adobe Photoshop.",
+      "As a freelance graphics designer, I specialized in creating flyers, art covers, and photo manipulations using Adobe Photoshop.",
     duration: "2020 - 2023",
   },
 ];
@@ -59,6 +59,17 @@ export const CONTACT_INFO = [
   {
     icon: <Mail className="w-6 h-6" />,
     link: "mailto:charlesobiora16@gmail.com",
+  },
+  {
+    icon: <Linkedin className="w-6 h-6" />,
+    link: "https://www.linkedin.com/in/charles-obiora-484a912a0/",
+  },
+];
+
+export const socialLinks = [
+  {
+    icon: <Github className="w-6 h-6" />,
+    link: "https://github.com/Charles77K",
   },
   {
     icon: <Linkedin className="w-6 h-6" />,

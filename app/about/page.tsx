@@ -17,27 +17,26 @@ const About = () => {
           </p>
 
           <p className="text-lg text-gray-300 leading-relaxed">
-            I started as a graphics designer, drawn to the art of visual
-            storytelling. But during my university days, curiosity pulled me
-            towards coding. Unlike most who begin with web development, I dove
-            straight into app development, fascinated by how software shapes
-            user experiences.
+            Attracted to the craft of visual storytelling, I began my career as
+            a graphics designer. However, during my time at university,
+            curiosity drew me to coding. Unlike most people who begin with web
+            development, I got right into app development because I was
+            captivated by how software influences user the way user engages with
+            app.
           </p>
 
           <p className="text-lg text-gray-300 leading-relaxed">
-            As I grew in the field, my interest expanded beyond just building
-            interfaces. I became curious about how things work behind the
-            scenes, which sparked my exploration of backend development.
-            Eventually, I embraced web development, blending these skills to
-            create seamless, user-centric applications.
+            My interest grew beyond merely creating interfaces as I advanced in
+            the field, I became interested in learning about the inner workings
+            of backend development.I eventually embrace web development,
+            combining these skills to produce flawless applications.
           </p>
 
           <p className="text-lg text-gray-300 leading-relaxed">
             Today, I focus on building mobile and web applications, continuously
-            learning and pushing my boundaries to deliver efficient, scalable,
-            and creative solutions. I’m driven by curiosity, a passion for clean
-            code, and the thrill of solving real-world problems through
-            technology.
+            learning and pushing myself to provide innovative solutions. I’m
+            driven by curiosity, a passion for clean code, and the excitement of
+            solving real-world problems through technology.
           </p>
         </div>
 
