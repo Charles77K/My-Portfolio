@@ -25,10 +25,10 @@ const HeroSection = () => {
         className="sm:text-xl text-center text-base md:text-start text-primary-foreground max-w-2xl"
       >
         Hi there, I&apos;m <span className="font-bold">Charles Obiora</span>, a
-        passionate software developer. I specialize in creating stunning
-        websites and mobile application that bring ideas to life. Whether
-        it&apos;s crafting intuitive user interfaces or building robust backend
-        systems, I thrive on delivering exceptional digital experiences.
+        passionate software developer. I specialize in creating amazing websites
+        and mobile application that bring ideas to life. Whether it&apos;s
+        crafting intuitive user interfaces or building reliable backend systems,
+        I&apos;m dedicated to delivering top-notch digital experiences.
       </motion.p>
 
       <Link href={"/about"} className="flex mx-auto sm:mx-0">
