@@ -26,8 +26,8 @@ const HeroSection = () => {
       >
         Hi there, I&apos;m <span className="font-bold">Charles Obiora</span>, a
         passionate software developer. I specialize in creating amazing websites
-        and mobile application that bring ideas to life. Whether it&apos;s
-        crafting intuitive user interfaces or building reliable backend systems,
+        and mobile applications that bring ideas to life. Whether it&apos;s
+        designing user-friendly interfaces or building reliable backend systems,
         I&apos;m dedicated to delivering top-notch digital experiences.
       </motion.p>
 
