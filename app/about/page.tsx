@@ -11,30 +11,27 @@ const About = () => {
         <div className="space-y-6 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 shadow-md">
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             I&apos;m Charles Obiora, a passionate software developer who loves
-            turning ideas into creative solutions. My journey into tech has been
-            anything but linear, and that&apos;s what makes it unique.
+            turning ideas into creative solutions.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-            Attracted to the craft of visual storytelling, I began my career as
-            a graphics designer. However, during my time at university,
-            curiosity drew me to coding. Unlike most people who begin with web
-            development, I jumped straight into app development because I was
-            captivated by how software impacts the way users engages with apps.
+            I began my career as a graphics designer. However, during my time at
+            university, curiosity led me to coding. Instead of the usual
+            web-first approach I jumped straight into app development because I
+            was captivated by how software impacts the way users engages with
+            apps.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-            My interest grew beyond merely creating interfaces as I advanced in
-            the field, I became interested in learning about the inner workings
-            of backend development.I eventually embrace web development as a
-            whole, combining these skills to build flawless applications.
+            Over time, I expanded into backend development and web development
+            as a whole, combining these skills to build seamless applications.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-            Today, I focus on building mobile and web applications, continuously
-            learning and pushing myself to provide innovative solutions. I’m
-            driven by curiosity, a passion for clean code, and the excitement of
-            solving real-world problems through technology.
+            Today, I develop mobile and web applications, continuously learning
+            and refining my skills. I’m driven by curiosity, a passion for clean
+            code, and the excitement of solving real-world problems through
+            technology.
           </p>
         </div>
 
