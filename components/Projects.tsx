@@ -91,7 +91,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
         </div>
       </div>
       {/* second half */}
-      <div className="flex flex-col space-y-6 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 shadow-md">
+      <div className="flex flex-col space-y-6 bg-gray-800/50 p-4 rounded-lg border border-gray-700/50 shadow-md">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">
             {title}

@@ -5,11 +5,13 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import { FaCode } from "react-icons/fa";
 
 const navData = [
   { label: "About Me", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
+  { label: "code", href: "https://github.com/Charles77K/My-Portfolio" },
 ];
 
 const Navbar = () => {
@@ -49,7 +51,7 @@ const Navbar = () => {
               {isOpen ? <X size={25} /> : <Menu size={25} />}
             </motion.button>
           </div>
-          <ul className="hidden md:flex gap-10">
+          <ul className="hidden md:flex gap-10 items-center">
             {navData.map((nav, idx) => (
               <motion.li
                 key={idx}
@@ -61,7 +63,17 @@ const Navbar = () => {
                   transition: { duration: 0.3, ease: "easeInOut" },
                 }}
               >
-                <Link href={nav.href}>{nav.label}</Link>
+                {nav.label === "code" ? (
+                  <Link
+                    href={nav.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaCode size={25} color="white" />
+                  </Link>
+                ) : (
+                  <Link href={nav.href}>{nav.label}</Link>
+                )}
               </motion.li>
             ))}
           </ul>
@@ -77,9 +89,20 @@ const Navbar = () => {
         >
           {navData.map((nav, idx) => (
             <motion.li key={idx} className="underline-offset-8">
-              <Link onClick={() => setIsOpen(false)} href={nav.href}>
-                {nav.label}
-              </Link>
+              {nav.label === "code" ? (
+                <Link
+                  onClick={() => setIsOpen(false)}
+                  href={nav.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaCode size={25} color="white" />
+                </Link>
+              ) : (
+                <Link onClick={() => setIsOpen(false)} href={nav.href}>
+                  {nav.label}
+                </Link>
+              )}
             </motion.li>
           ))}
         </motion.ul>
