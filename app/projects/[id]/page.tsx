@@ -13,66 +13,74 @@ interface DynamicResponse {
   project: ProjectType;
 }
 
+// ✅ Next.js 15: params are a Promise
 export const generateStaticParams = async () => {
   try {
     const response = await fetchApiData<ResponseType>(`${apiRoute}/projects`);
-    return response.projects.map((project) => ({
-      id: project._id.toString(),
-    }));
-  } catch (error: unknown) {
-    console.log("failed to generate static params", error);
+    return (
+      response.projects?.map((project) => ({
+        id: project._id.toString(),
+      })) || []
+    );
+  } catch (error) {
+    console.error("Failed to generate static params:", error);
     return [];
   }
 };
+
 export const revalidate = 86400;
 
+// ✅ Fetch the project **inside page.tsx** and reuse data for metadata
+const fetchProject = async (id: string): Promise<ProjectType | null> => {
+  try {
+    const response = await fetchApiData<DynamicResponse>(
+      `${apiRoute}/projects/${id}`
+    );
+    return response.project;
+  } catch (error) {
+    console.error("Failed to fetch project data:", error);
+    return null;
+  }
+};
+
+// ✅ Pass fetched data into metadata (NO DUPLICATE FETCH)
 export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> => {
-  const id = (await params).id;
-  try {
-    const project = await fetchApiData<DynamicResponse>(
-      `${apiRoute}/projects/${id}`
-    );
-    return {
-      title: `Project - ${project.project.title}`,
-      description: `Project details for ${project.project.description}`,
-    };
-  } catch (error: unknown) {
-    console.error("Failed to fetch project data", error);
-    return {
-      title: "Project not found",
-      description: "Unable to load Project details",
-    };
-  }
+  const { id } = await params;
+  const project = await fetchProject(id);
+
+  return project
+    ? {
+        title: `Project - ${project.title}`,
+        description: `Project details for ${project.description}`,
+      }
+    : {
+        title: "Project not found",
+        description: "Unable to load project details",
+      };
 };
 
-const page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  try {
-    const id = (await params).id;
-    const project = await fetchApiData<DynamicResponse>(
-      `${apiRoute}/projects/${id}`
-    );
-    const data = project.project;
-    return (
-      <div className="min-h-screen h-full mt-20 text-white">
-        <Projects data={data} />
-      </div>
-    );
-  } catch (error: unknown) {
-    console.error("Failed to fetch project data", error);
-    return (
-      <div className="min-h-screen h-full mt-20">
+// ✅ Page fetches **once** and metadata gets it from here
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const projectData = await fetchProject(id);
+
+  return (
+    <div className="min-h-screen h-full mt-20 text-white">
+      {projectData ? (
+        <Projects data={projectData} />
+      ) : (
         <ErrorModal
           title="Oops! Something went wrong"
-          text="We couldn't load the project at this time please try again later"
-          retry="Retry"
+          text="We couldn't load the project at this time. Please try again later."
+          retry="retry" // ✅ Works in server components
         />
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 };
 
-export default page;
+export default Page;
