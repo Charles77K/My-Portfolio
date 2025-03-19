@@ -19,7 +19,7 @@ const ProjectsLoader = () => {
           </div>
         </div>
 
-        <div className="bg-gray-800 bg-opacity-50 border border-gray-700 border-opacity-50 rounded-lg mt-5 p-4 space-y-3">
+        <div className="bg-card-foreground bg-opacity-50 border border-gray-700 border-opacity-50 rounded-lg mt-5 p-4 space-y-3">
           <div className="flex items-center justify-between">
             <Skeleton width={100} height={40} className="rounded-md" />
             <Skeleton width={120} height={20} />
@@ -28,7 +28,7 @@ const ProjectsLoader = () => {
       </div>
 
       {/* Project Details Skeleton */}
-      <div className="flex flex-col space-y-6 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 shadow-md">
+      <div className="flex flex-col space-y-6 bg-card-foreground/50 p-6 rounded-lg border border-gray-700/50 shadow-md">
         <div>
           <Skeleton width={200} height={32} />
           <Skeleton count={3} />
@@ -38,7 +38,7 @@ const ProjectsLoader = () => {
           <Skeleton width={150} height={24} className="mb-4" />
           <div className="space-y-4">
             {Array.from({ length: 3 }).map((_, idx) => (
-              <div key={idx} className="p-4 rounded-md bg-gray-800/75">
+              <div key={idx} className="p-4 rounded-md bg-card-foreground/75">
                 <Skeleton width={120} height={20} />
                 <Skeleton width={100} height={16} />
                 <Skeleton width={150} height={14} />

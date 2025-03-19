@@ -13,7 +13,6 @@ interface DynamicResponse {
   project: ProjectType;
 }
 
-// ✅ Next.js 15: params are a Promise
 export const generateStaticParams = async () => {
   try {
     const response = await fetchApiData<ResponseType>(`${apiRoute}/projects`);
@@ -28,9 +27,9 @@ export const generateStaticParams = async () => {
   }
 };
 
-export const revalidate = 86400;
+export const revalidate = 7200;
 
-// ✅ Fetch the project **inside page.tsx** and reuse data for metadata
+// ✅ Fetch the project **inside page.tsx** and reuse data for metadata and main page
 const fetchProject = async (id: string): Promise<ProjectType | null> => {
   try {
     const response = await fetchApiData<DynamicResponse>(
@@ -43,7 +42,7 @@ const fetchProject = async (id: string): Promise<ProjectType | null> => {
   }
 };
 
-// ✅ Pass fetched data into metadata (NO DUPLICATE FETCH)
+// ✅ Pass fetched data into metadata
 export const generateMetadata = async ({
   params,
 }: {
@@ -63,7 +62,7 @@ export const generateMetadata = async ({
       };
 };
 
-// ✅ Page fetches **once** and metadata gets it from here
+// ✅ Page fetches
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const projectData = await fetchProject(id);
@@ -76,7 +75,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <ErrorModal
           title="Oops! Something went wrong"
           text="We couldn't load the project at this time. Please try again later."
-          retry="retry" // ✅ Works in server components
+          retry="retry" //
         />
       )}
     </div>
