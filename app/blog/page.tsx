@@ -1,5 +1,11 @@
 import React from "react";
 import { Clock } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description: "All Blogs",
+};
 
 const Page = () => {
   return (

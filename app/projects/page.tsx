@@ -5,6 +5,12 @@ import { ResponseType } from "../page";
 import ProjectsPage from "@/components/ProjectsPage";
 import Loader from "./loading";
 import ErrorModal from "@/components/ui/ErrorModal";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "All Projects",
+};
 
 const page = async () => {
   try {

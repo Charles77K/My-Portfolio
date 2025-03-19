@@ -1,6 +1,12 @@
 // app/components/About.tsx
 import TechStackItem from "@/components/TechStackItem";
 import { CONTACT_INFO, EXPERIENCES, techStack } from "@/lib/static";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Me",
+  description: "Learn more about me",
+};
 
 const About = () => {
   return (
