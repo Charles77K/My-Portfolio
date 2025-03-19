@@ -15,7 +15,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
   const [selectedImage, setSelectedImage] = useState<string>(images[0]);
 
   return (
-    <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 p-8">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 p-8">
       <div>
         {/* image section */}
         <div className="grid gap-4">
