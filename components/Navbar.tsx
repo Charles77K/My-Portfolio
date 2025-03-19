@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <>
       <div className="bg-black bg-opacity-95 py-6 fixed top-0 left-0 right-0 text-base md:text-lg z-40">
-        <nav className="px-4 md:px-8 lg:px-12 flex justify-between md:max-w-2xl lg:max-w-[75rem] items-center mx-auto text-primary-foreground">
+        <nav className="px-4 md:px-8 lg:px-28 flex justify-between items-center mx-auto text-primary-foreground">
           <aside
             className="flex gap-1 items-center"
             onClick={() => setIsOpen(false)}

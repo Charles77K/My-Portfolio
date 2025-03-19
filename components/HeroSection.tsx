@@ -7,12 +7,12 @@ import { MagicButton } from "./ui/MagicButton";
 
 const HeroSection = () => {
   return (
-    <div className="container h-screen md:min-h-screen p-4 md:p-20 flex gap-10 md:gap-10 flex-col items-start md:mx-auto justify-center">
+    <div className="px-4 md:px-8 lg:px-28 p-4 py-40 flex gap-10 md:gap-10 flex-col items-center md:items-start  md:mx-auto justify-center">
       <motion.h1
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-5xl sm:text-7xl text-center sm:text-start font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
+        className="text-5xl sm:text-7xl text-center md:text-start font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
       >
         Turning Ideas into Interactive <br />
         Masterpieces
