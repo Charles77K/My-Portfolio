@@ -48,7 +48,7 @@ const Navbar = () => {
               }}
               onClick={handleToggle}
             >
-              {isOpen ? <X size={25} /> : <Menu size={25} />}
+              {isOpen ? <X size={40} /> : <Menu size={40} />}
             </motion.button>
           </div>
           <ul className="hidden md:flex gap-10 items-center">
@@ -80,15 +80,22 @@ const Navbar = () => {
         </nav>
       </div>
       {isOpen && (
-        <motion.ul
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          // exit={{ height: 0, opacity: 0 }}
+        <motion.div
+          initial={{ x: "100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          // exit={{ x: "100%", opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="flex md:hidden text-base flex-col top-16 text-white bg-black bg-opacity-95 h-1/2 w-full inset-0 fixed gap-8 font-bold px-4 pt-4 z-50"
+          className="flex md:hidden flex-col rounded-l-3xl text-2xl fixed top-16 right-0 bg-zinc-900 text-white 
+              h-screen w-2/3 z-50 shadow-lg px-6 py-8 gap-8 font-medium"
         >
           {navData.map((nav, idx) => (
-            <motion.li key={idx} className="underline-offset-8">
+            <motion.nav
+              key={idx}
+              className="underline-offset-8"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 * idx, duration: 0.4 }}
+            >
               {nav.label === "code" ? (
                 <Link
                   onClick={() => setIsOpen(false)}
@@ -96,16 +103,16 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaCode size={25} color="white" />
+                  <FaCode size={25} color="black" />
                 </Link>
               ) : (
                 <Link onClick={() => setIsOpen(false)} href={nav.href}>
                   {nav.label}
                 </Link>
               )}
-            </motion.li>
+            </motion.nav>
           ))}
-        </motion.ul>
+        </motion.div>
       )}
     </>
   );

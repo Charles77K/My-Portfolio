@@ -3,7 +3,6 @@ import {
   SiRedux,
   SiNextdotjs,
   SiTailwindcss,
-  SiStyledcomponents,
   SiTypescript,
   SiExpo,
   SiNodedotjs,
@@ -29,10 +28,7 @@ export const techStack = [
   { icon: <SiMongodb size={22} color="green" />, text: "MongoDB" },
   { icon: <SiTailwindcss size={22} color="#06B6D4" />, text: "Tailwind CSS" },
   { icon: <SiRedux size={22} color="#764ABC" />, text: "Redux" },
-  {
-    icon: <SiStyledcomponents size={22} color="#DB7093" />,
-    text: "Styled Components",
-  },
+
   { icon: <FaGit size={22} color="#F05033" />, text: "Git" },
 ];
 

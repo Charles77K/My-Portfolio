@@ -58,7 +58,9 @@ const Projects = ({ data }: { data: ProjectType }) => {
             ))}
           </div>
         </div>
-        <div className="bg-gray-800 bg-opacity-50 border border-gray-700 border-opacity-50 rounded-lg mt-5 p-4 flex flex-col space-y-3">
+
+        {/* git link and website section */}
+        <div className="bg-card-foreground bg-opacity-50 border border-gray-700 border-opacity-50 rounded-lg mt-5 p-4 flex flex-col space-y-3">
           <div className="flex items-center justify-between">
             <a
               href={git}
@@ -90,8 +92,9 @@ const Projects = ({ data }: { data: ProjectType }) => {
           </div>
         </div>
       </div>
-      {/* second half */}
-      <div className="flex flex-col space-y-6 bg-gray-800/50 p-4 rounded-lg border border-gray-700/50 shadow-md">
+
+      {/* description */}
+      <div className="flex flex-col space-y-6 bg-card-foreground p-4 rounded-lg border border-gray-700/50 shadow-md">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">
             {title}
@@ -101,6 +104,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
           </p>
         </div>
 
+        {/* development team */}
         <div>
           <h3 className="text-xl font-semibold text-white mb-4 border-b border-gray-700 pb-2">
             Development Team
@@ -109,7 +113,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
             {developers.map((dev, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between bg-gray-800/75 p-4 rounded-md transition-all duration-300 hover:bg-gray-800/90"
+                className="flex items-center justify-between bg-zinc-900/50 p-4 rounded-md transition-all duration-300 hover:bg-zinc-900"
               >
                 <div>
                   <p className="text-white font-medium text-lg">
@@ -125,6 +129,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
                     ))}
                   </p>
                 </div>
+                {/* email and github */}
                 <div className="flex items-center space-x-3">
                   <a
                     href={`mailto:${dev.email}`}

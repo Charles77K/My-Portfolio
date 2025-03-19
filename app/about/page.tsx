@@ -8,7 +8,7 @@ const About = () => {
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-white">About Me</h1>
 
-        <div className="space-y-6 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 shadow-md">
+        <div className="space-y-6 bg-card-foreground p-6 rounded-lg border border-gray-700/50 shadow-md">
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             I&apos;m Charles Obiora, a passionate software developer who loves
             turning ideas into creative solutions.
@@ -35,7 +35,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="mt-12 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 shadow-md">
+        <div className="mt-12 bg-card-foreground p-6 rounded-lg border border-gray-700/50 shadow-md">
           <h1 className="font-semibold text-2xl mb-4 text-white border-b border-gray-700 pb-2">
             Experience
           </h1>
@@ -59,7 +59,7 @@ const About = () => {
           </ul>
         </div>
 
-        <div className="mt-12 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 shadow-md">
+        <div className="mt-12 bg-card-foreground p-6 rounded-lg border border-gray-700/50 shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">
             Tech Stack
           </h2>
