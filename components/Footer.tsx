@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-white pt-10 pb-4 px-4 md:px-8 h-full">
+    <footer className="bg-card-foreground text-white pt-10 pb-4 px-4 md:px-8 h-full">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between gap-5 sm:gap-0 items-start sm:items-center">
           {/* Personal Branding */}
@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright and Legal */}
-        <div className="mt-4 pt-4 border-t border-gray-800 text-center">
+        <div className="mt-4 pt-4 border-t border-gray-800 bg-card-foreground text-center">
           <p className="text-sm text-gray-400 mb-2">
             © {currentYear} Charles Obiora. All Rights Reserved.
           </p>
