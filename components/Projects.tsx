@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { ProjectType } from "./HomeProjectItem";
 import Image from "next/image";
-import { CheckIcon, Code } from "lucide-react";
+import { CheckIcon, Github } from "lucide-react";
 import { FaEnvelope, FaGithub } from "react-icons/fa";
+import { cn } from "@/lib/utils";
 
 const Projects = ({ data }: { data: ProjectType }) => {
   useEffect(() => {
@@ -38,12 +39,12 @@ const Projects = ({ data }: { data: ProjectType }) => {
                 className="relative"
               >
                 <Image
-                  className={`h-auto max-w-full rounded-sm hover:cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out
-          ${
-            type === "web" && selectedImage === image
-              ? "ring-2 ring-white ring-offset-gray-800 p-1"
-              : ""
-          }`}
+                  className={cn(
+                    "h-auto max-w-full rounded-sm hover:cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out",
+                    type === "web" && selectedImage === image
+                      ? "ring-2 ring-white ring-offset-gray-800 p-1"
+                      : ""
+                  )}
                   src={image}
                   alt=""
                   width={200}
@@ -65,10 +66,10 @@ const Projects = ({ data }: { data: ProjectType }) => {
             <a
               href={git}
               target="_blank"
-              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-md transition-colors duration-200"
+              className="flex items-center space-x-2 bg-blue-700 hover:bg-blue-900 text-white px-3 py-2 rounded-md transition-colors duration-200"
             >
-              <Code className="w-5 h-5" />
-              <span className="text-sm font-medium">Get Code</span>
+              <span className="text-sm font-medium">Source</span>
+              <Github />
             </a>
 
             {link && (

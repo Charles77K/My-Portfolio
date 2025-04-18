@@ -1,4 +1,3 @@
-import { ResponseType } from "@/app/page";
 import { ProjectType } from "@/components/HomeProjectItem";
 import Projects from "@/components/Projects";
 import ErrorModal from "@/components/ui/ErrorModal";
@@ -10,30 +9,16 @@ import React from "react";
 interface DynamicResponse {
   message: string;
   status: string;
-  project: ProjectType;
+  project: ProjectType | ProjectType[];
 }
 
-export const generateStaticParams = async () => {
-  try {
-    const response = await fetchApiData<ResponseType>(`${apiRoute}/projects`);
-    return (
-      response.projects?.map((project) => ({
-        id: project._id.toString(),
-      })) || []
-    );
-  } catch (error) {
-    console.error("Failed to generate static params:", error);
-    return [];
-  }
-};
-
-export const revalidate = 7200;
-
-// ✅ Fetch the project **inside page.tsx** and reuse data for metadata and main page
-const fetchProject = async (id: string): Promise<ProjectType | null> => {
+// Fetch the project and reuse data for metadata and main page
+const fetchProject = async (
+  id?: string
+): Promise<ProjectType[] | ProjectType | null> => {
   try {
     const response = await fetchApiData<DynamicResponse>(
-      `${apiRoute}/projects/${id}`
+      `${apiRoute}/projects${id ? `/${id}` : ""}`
     );
     return response.project;
   } catch (error) {
@@ -42,7 +27,24 @@ const fetchProject = async (id: string): Promise<ProjectType | null> => {
   }
 };
 
-// ✅ Pass fetched data into metadata
+export const generateStaticParams = async () => {
+  try {
+    const projects = await fetchProject();
+    if (Array.isArray(projects)) {
+      return projects.map((project: ProjectType) => ({
+        id: project._id.toString(),
+      }));
+    }
+    return [];
+  } catch (error) {
+    console.error("Failed to generate static params:", error);
+    return [];
+  }
+};
+
+export const revalidate = 7200;
+
+// Pass fetched data into metadata
 export const generateMetadata = async ({
   params,
 }: {
@@ -51,33 +53,39 @@ export const generateMetadata = async ({
   const { id } = await params;
   const project = await fetchProject(id);
 
-  return project
-    ? {
-        title: `Project - ${project.title}`,
-        description: `Project details for ${project.description}`,
-      }
-    : {
-        title: "Project not found",
-        description: "Unable to load project details",
-      };
+  if (!project || Array.isArray(project)) {
+    return {
+      title: "Project not found",
+      description: "Unable to load project details",
+    };
+  }
+
+  return {
+    title: `Project - ${project.title}`,
+    description: `Project details for ${project.description}`,
+  };
 };
 
-// ✅ Page fetches
+// Page component
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const projectData = await fetchProject(id);
 
-  return (
-    <div className="min-h-screen h-full mt-20 text-white">
-      {projectData ? (
-        <Projects data={projectData} />
-      ) : (
+  if (!projectData || Array.isArray(projectData)) {
+    return (
+      <div className="min-h-screen h-full mt-20 text-white">
         <ErrorModal
           title="Oops! Something went wrong"
           text="We couldn't load the project at this time. Please try again later."
-          retry="retry" //
+          retry="retry"
         />
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen h-full mt-20 text-white">
+      <Projects data={projectData} />
     </div>
   );
 };
