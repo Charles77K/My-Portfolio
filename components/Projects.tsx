@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ProjectType } from "./HomeProjectItem";
 import Image from "next/image";
 import { CheckIcon, Github } from "lucide-react";
@@ -8,45 +8,88 @@ import { FaEnvelope, FaGithub } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 const Projects = ({ data }: { data: ProjectType }) => {
+  const { description, developers, git, images, link, title, type } = data;
+  const [selectedImage, setSelectedImage] = useState<string>(images[0]);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  // Refs for smooth scrolling
+  const carouselRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { description, developers, git, images, link, title, type } = data;
-  const [selectedImage, setSelectedImage] = useState<string>(images[0]);
+  // Auto slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex = (currentSlideIndex + 1) % images.length;
+      setCurrentSlideIndex(nextIndex);
+      setSelectedImage(images[nextIndex]);
+
+      // Properly scroll the main carousel
+      if (carouselRef.current) {
+        carouselRef.current.scrollTo({
+          left: nextIndex * carouselRef.current.offsetWidth,
+          behavior: "smooth",
+        });
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [currentSlideIndex, images]);
+
+  // Handle manual image selection
+  const handleImageSelect = (image: string, index: number) => {
+    setSelectedImage(image);
+    setCurrentSlideIndex(index);
+
+    // Smooth scroll to selected image
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({
+        left: index * carouselRef.current.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 p-8">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 p-4">
       <div>
         {/* image section */}
         <div className="grid gap-4">
           {type === "web" && (
-            <div>
-              <Image
-                className="h-auto max-w-full rounded-lg"
-                src={selectedImage}
-                alt=""
-                width={800}
-                height={800}
-              />
+            <div
+              ref={carouselRef}
+              className="flex w-full overflow-x-hidden scroll-smooth"
+            >
+              {images.map((image, index) => (
+                <Image
+                  key={image}
+                  className="w-full h-auto rounded-lg"
+                  src={image}
+                  alt={`${title} ${index + 1}`}
+                  width={800}
+                  height={800}
+                />
+              ))}
             </div>
           )}
-          <div className="grid grid-cols-5 gap-4">
-            {images.map((image) => (
+          <div className="grid grid-cols-5 gap-4 overflow-x-auto p-2">
+            {images.map((image, idx) => (
               <div
                 key={image}
-                onClick={() => setSelectedImage(image)}
-                className="relative"
+                onClick={() => handleImageSelect(image, idx)}
+                className="relative flex-shrink-0"
               >
                 <Image
                   className={cn(
                     "h-auto max-w-full rounded-sm hover:cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out",
                     type === "web" && selectedImage === image
-                      ? "ring-2 ring-white ring-offset-gray-800 p-1"
+                      ? "ring-1 ring-white ring-offset-1 p-1"
                       : ""
                   )}
                   src={image}
-                  alt=""
+                  alt={`Thumbnail ${idx + 1}`}
                   width={200}
                   height={200}
                 />
@@ -66,6 +109,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
             <a
               href={git}
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center space-x-2 bg-blue-700 hover:bg-blue-900 text-white px-3 py-2 rounded-md transition-colors duration-200"
             >
               <span className="text-sm font-medium">Source</span>
@@ -141,6 +185,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
                   <a
                     href={dev.github}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     <FaGithub className="w-5 h-5" />

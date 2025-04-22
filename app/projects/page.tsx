@@ -1,9 +1,9 @@
+import React from "react";
+
 import { fetchApiData } from "@/lib/apiHelper";
 import { apiRoute } from "@/lib/static";
-import React, { Suspense } from "react";
 import { ResponseType } from "../page";
 import ProjectsPage from "@/components/ProjectsPage";
-import Loader from "./loading";
 import ErrorModal from "@/components/ui/ErrorModal";
 import { Metadata } from "next";
 
@@ -18,9 +18,7 @@ const page = async () => {
     const projects = response.projects;
     return (
       <div className="h-full mt-20 p-4 ">
-        <Suspense fallback={<Loader />}>
-          <ProjectsPage projects={projects} />
-        </Suspense>
+        <ProjectsPage projects={projects} />
       </div>
     );
   } catch (error: unknown) {

@@ -1,10 +1,11 @@
+import React from "react";
+
 import { ProjectType } from "@/components/HomeProjectItem";
 import Projects from "@/components/Projects";
 import ErrorModal from "@/components/ui/ErrorModal";
 import { fetchApiData } from "@/lib/apiHelper";
 import { apiRoute } from "@/lib/static";
 import { Metadata } from "next";
-import React from "react";
 
 interface DynamicResponse {
   message: string;
@@ -15,7 +16,7 @@ interface DynamicResponse {
 // Fetch the project and reuse data for metadata and main page
 const fetchProject = async (
   id?: string
-): Promise<ProjectType[] | ProjectType | null> => {
+): Promise<ProjectType[] | ProjectType> => {
   try {
     const response = await fetchApiData<DynamicResponse>(
       `${apiRoute}/projects${id ? `/${id}` : ""}`
@@ -23,13 +24,13 @@ const fetchProject = async (
     return response.project;
   } catch (error) {
     console.error("Failed to fetch project data:", error);
-    return null;
+    return [];
   }
 };
 
 export const generateStaticParams = async () => {
   try {
-    const projects = await fetchProject();
+    const projects = fetchProject();
     if (Array.isArray(projects)) {
       return projects.map((project: ProjectType) => ({
         id: project._id.toString(),
