@@ -1,9 +1,7 @@
 export const fetchApiData = async <T>(url: string): Promise<T> => {
   try {
-    await new Promise((res) => setTimeout(res, 2000));
-
     const response = await fetch(url, {
-      next: { revalidate: 86400 }, // Cache and revalidate every 24 hours seconds
+      next: { revalidate: 7200 },
     });
 
     if (!response.ok) {

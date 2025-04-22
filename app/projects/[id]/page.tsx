@@ -7,6 +7,7 @@ import { fetchApiData } from "@/lib/apiHelper";
 import { apiRoute } from "@/lib/static";
 import { Metadata } from "next";
 
+export const revalidate = 7200;
 interface DynamicResponse {
   message: string;
   status: string;
