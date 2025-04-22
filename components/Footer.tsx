@@ -52,20 +52,6 @@ const Footer = () => {
           <p className="text-sm text-gray-400 mb-2">
             © {currentYear} Charles Obiora. All Rights Reserved.
           </p>
-          <div className="space-x-4">
-            <Link
-              href="/#"
-              className="text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/#"
-              className="text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

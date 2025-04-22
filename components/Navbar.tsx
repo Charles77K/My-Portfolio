@@ -79,6 +79,15 @@ const Navbar = () => {
           </ul>
         </nav>
       </div>
+
+      {isOpen && (
+        <div
+          className="inset-0 fixed bg-black/70"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* mobile nav bar */}
       <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
@@ -86,8 +95,8 @@ const Navbar = () => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: "100%", opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="flex md:hidden flex-col rounded-l-3xl text-2xl fixed top-16 right-0 bg-card-foreground text-white 
-              h-screen w-2/3 z-50 shadow-lg px-6 py-8 gap-8 font-medium"
+            className="flex md:hidden flex-col rounded-l-3xl text-lg fixed top-24 right-0 bg-card-foreground text-white 
+              h-screen w-2/3 z-50 shadow-lg px-6 py-4 gap-8 font-medium"
           >
             {navData.map((nav, idx) => (
               <motion.nav
