@@ -43,8 +43,6 @@ export const generateStaticParams = async () => {
   }
 };
 
-export const revalidate = 7200;
-
 // Pass fetched data into metadata
 export const generateMetadata = async ({
   params,

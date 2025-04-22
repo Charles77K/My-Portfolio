@@ -14,7 +14,7 @@ const About = () => {
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-white">About Me</h1>
 
-        <div className="space-y-6 bg-card-foreground p-6 rounded-lg border border-gray-700/50 shadow-md">
+        <div className="space-y-6 bg-card-foreground p-4 rounded-lg border border-gray-700/50 shadow-md">
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             I&apos;m Charles Obiora, a passionate software developer who loves
             turning ideas into creative solutions.
@@ -41,7 +41,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="mt-12 bg-card-foreground p-6 rounded-lg border border-gray-700/50 shadow-md">
+        <div className="mt-12 bg-card-foreground p-4 rounded-lg border border-gray-700/50 shadow-md">
           <h1 className="font-semibold text-2xl mb-4 text-white border-b border-gray-700 pb-2">
             Experience
           </h1>
@@ -49,7 +49,7 @@ const About = () => {
             {EXPERIENCES.map((item, idx) => (
               <li
                 key={idx}
-                className="flex items-start justify-between py-4 border-b border-gray-700 last:border-b-0 transition-all duration-300 px-2 rounded-md"
+                className="flex items-start justify-between py-4 border-b border-gray-700 last:border-b-0 transition-all duration-300 rounded-md"
               >
                 <section>
                   <p className="text-white font-medium">{item.role}</p>
@@ -65,7 +65,7 @@ const About = () => {
           </ul>
         </div>
 
-        <div className="mt-12 bg-card-foreground p-6 rounded-lg border border-gray-700/50 shadow-md">
+        <div className="mt-12 bg-card-foreground p-4 rounded-lg border border-gray-700/50 shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">
             Tech Stack
           </h2>

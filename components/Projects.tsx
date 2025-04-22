@@ -113,7 +113,7 @@ const Projects = ({ data }: { data: ProjectType }) => {
               className="flex items-center space-x-2 bg-blue-700 hover:bg-blue-900 text-white px-3 py-2 rounded-md transition-colors duration-200"
             >
               <span className="text-sm font-medium">Source</span>
-              <Github />
+              <Github className="size-5" />
             </a>
 
             {link && (
